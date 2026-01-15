@@ -1,0 +1,68 @@
+<div class="editor-dialog">
+  <div class="editor-header">
+    <h2 mat-dialog-title>Editor de Memes</h2>
+    <button mat-icon-button (click)="closeEditor()" class="close-button">
+      ×
+    </button>
+  </div>
+
+  <div mat-dialog-content class="editor-content">
+    <div class="canvas-container">
+      <canvas #canvas></canvas>
+    </div>
+
+    <div class="editor-controls">
+      <mat-form-field appearance="outline">
+        <mat-label>Texto</mat-label>
+        <input
+          matInput
+          [(ngModel)]="textInput"
+          (keyup.enter)="addText()"
+          placeholder="Escribe tu texto aquí..."
+        />
+      </mat-form-field>
+
+      <div class="control-group">
+        <label>Tamaño de fuente: {{ fontSize() }}px</label>
+        <mat-slider
+          min="20"
+          max="100"
+          discrete
+          [step]="1"
+          (input)="onFontSizeChange($event)"
+        >
+          <input matSliderThumb [value]="fontSize()" />
+        </mat-slider>
+      </div>
+
+      <div class="control-group">
+        <label>Color del texto</label>
+        <input type="color" [(ngModel)]="textColor" class="color-input" />
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Fuente</mat-label>
+        <mat-select [(ngModel)]="fontFamily">
+          <mat-option value="Arial">Arial</mat-option>
+          <mat-option value="Times New Roman">Times New Roman</mat-option>
+          <mat-option value="Courier New">Courier New</mat-option>
+          <mat-option value="Verdana">Verdana</mat-option>
+          <mat-option value="Impact">Impact</mat-option>
+          <mat-option value="Comic Sans MS">Comic Sans MS</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="button-group">
+        <button mat-raised-button color="primary" (click)="addText()">
+          Añadir Texto
+        </button>
+        <button mat-raised-button color="warn" (click)="deleteSelectedText()">
+          Eliminar Texto Seleccionado
+        </button>
+        <button mat-raised-button color="accent" (click)="downloadImage()">
+          Descargar Meme
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

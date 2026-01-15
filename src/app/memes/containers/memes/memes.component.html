@@ -1,0 +1,16 @@
+<div class="meme-list-container">
+  <h2>Meme maker</h2>
+
+  @if (loading()) {
+  <div class="loading">
+    <p>Cargando elementos...</p>
+  </div>
+  } @else if (error()) {
+  <div class="error">
+    <p>{{ error() }}</p>
+    <button (click)="loadMemes()" class="retry-button">Reintentar</button>
+  </div>
+  } @else {
+  <app-meme-card [memes]="memes()" (memeClick)="onMemeClick($event)" />
+  }
+</div>

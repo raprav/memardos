@@ -1,0 +1,15 @@
+<div class="memes-grid">
+  @for (meme of memes(); track meme.id) {
+  <div class="meme-card" (click)="onMemeClick(meme)">
+    <h3 class="meme-title">{{ meme.name }}</h3>
+    <img [src]="meme.url" alt="{{ meme.name }}" class="meme-image" />
+    <div class="meme-overlay">
+      <span class="edit-hint">Click para editar</span>
+    </div>
+  </div>
+  }@empty {
+  <div class="empty">
+    <p>No hay memes para mostrar</p>
+  </div>
+  }
+</div>
