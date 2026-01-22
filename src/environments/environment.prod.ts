@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://memardos-production.up.railway.app/api',
+  apiUrl: 'https://api.memardos.com/api',
 };
